@@ -39,7 +39,7 @@ class ArticlesController extends AppController {
         if ($this->request->is('post')) {
             $article = $this->Articles->patchEntity($article, $this->request->getData());
 
-            $article->user_id = $this->Auth->user('id');
+            $article->user_id = Parent::$whoIsIn['id'];
 
             if ($this->Articles->save($article)) {
                 $this->Flash->success(__('Your article has been saved'));
@@ -47,10 +47,6 @@ class ArticlesController extends AppController {
             }
             $this->Flash->error(__('Unable to add your article.'));
         }
-
-        $tags = $this->Articles->Tags->find('list');
-
-        $this->set('tags', $tags);
 
         $this->set('article', $article);
     }
@@ -72,10 +68,6 @@ class ArticlesController extends AppController {
             }
             $this->Flash->error(__('Unable to update your article'));
         }
-
-        $tags = $this->Articles->Tags->find('list');
-
-        $this->set('tags', $tags);
 
         $this->set('article', $article);
     }

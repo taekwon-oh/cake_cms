@@ -28,6 +28,8 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+    public static $whoIsIn;
+
     /**
      * Initialization hook method.
      *
@@ -68,6 +70,9 @@ class AppController extends Controller
         //動作するようにします。また、読み取り専用のアクションを有効にします。
 
         $this->Auth->allow(['display', 'view', 'index']);
+
+        $this::$whoIsIn = $this->Auth->user();
+        $this->set('whoInThere',$this::$whoIsIn);
 
         /*
          * Enable the following components for recommended CakePHP security settings.

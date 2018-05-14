@@ -21,6 +21,12 @@ class ArticlesTable extends Table {
 
     public function beforeSave($event, $entity, $options)
     {
+        if ($entity->isNew() && !$entity->slug) {
+            $sluggedTitle = Text::slug($entity->title);
+            // スラグをスキーマで定義されている最大長に調整
+            $entity->slug = substr($sluggedTitle, 0, 191);
+        }
+
         if ($entity->tag_string) {
             $entity->tags = $this->_buildTags($entity->tag_string);
         }

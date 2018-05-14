@@ -108,7 +108,7 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect($this->Auth->logout());
     }
 
     public function login()
@@ -127,5 +127,12 @@ class UsersController extends AppController
     {
         $this->Flash->success('ログアウトしました。');
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function isAuthorized($user)
+    {
+        $userSelected = $this->request->getParam('pass.0');
+        return  $userSelected == $user['id'];
+
     }
 }

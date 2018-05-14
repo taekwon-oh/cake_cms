@@ -8,8 +8,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Main'), '/') ?></li>
+        <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users','action' => 'logout']) ?></li>
     </ul>
 </nav>
 <div class="users form large-9 medium-8 columns content">
