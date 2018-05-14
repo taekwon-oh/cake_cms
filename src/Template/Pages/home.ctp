@@ -6,6 +6,7 @@
 
     <h3><?= $this->Html->link('記事一覧',['controller' => 'Articles', 'action' => 'index'])?></h3>
     <h3><?= $this->Html->link('ユーザーリスト',['controller' => 'Users', 'action' => 'index'])?></h3>
+    <h3><?= $this->Html->link('タグリスト',['controller' => 'Tags', 'action' => 'index'])?></h3>
 
 <?php else:?>
     <h3><?= $this->Html->link('ログイン',['controller'=> 'Users','action' => 'login']) ?></h3>
